@@ -1,0 +1,14 @@
+<div class="card ms-auto me-auto mt-5" style="width: 24rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{ results_count }} Search Result(s)</h5>
+        {% if results %}
+        <ul>
+        {% for each in results %}
+            <li><a href="#">{{ each.ticker }} - {{ each.name }}</li>
+        {% endfor %}
+        </ul>
+        {% else %}
+        <p>Sorry, nothing matched your search!</p>
+        {% endif %}
+    </div>
+</div>
