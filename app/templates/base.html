@@ -23,7 +23,7 @@
                     <input class="form-control me-2" type="text" 
                         name="search" placeholder="Search Tickers" 
                         hx-get="/search/autocomplete" 
-                        hx-trigger="keyup[target.value.length > 0] changed delay:100ms" 
+                        hx-trigger="keyup changed delay:100ms" 
                         hx-target="#search-results" 
                         hx-indicator=".htmx-indicator">
                     <button class="btn btn-outline-light" type="submit">Search</button>

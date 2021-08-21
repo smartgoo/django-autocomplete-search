@@ -1,8 +1,5 @@
 import re
 
-from django.core.cache import cache
-
-
 class SearchResults():
     """
     A class that holds the search results
@@ -13,10 +10,10 @@ class SearchResults():
         :param query: the search query entered by the user on the site
         :param index: the search index to search over
         """
-        self.results = results
-        self.count = count
+        self.results: list = results
+        self.count: int = count
 
-
+ 
 class SearchIndex():
     """
     A class for creating search indexes
@@ -26,15 +23,19 @@ class SearchIndex():
         """
         :param data: the data we want to create the index for
         """
-        self.data = data
-        self.index_length = len(data)
-        self.index = self._generate_index()
+        self.raw_data: list = data
+        self.index_length: int = len(data)
+        self.index: list = self._generate_index()
 
     def _generate_index(self) -> list:
         """
         Generates search index during initialization
         """
-        index = [{"ticker": each[0],"name": each[1]} for each in self.data]
+
+        # Iterate over raw data from csv and create an index
+        index = [{"ticker": each[0],"name": each[1]} for each in self.raw_data]
+
+        # Sort the index by alphabetically by ticker
         index = sorted(index, key = lambda i: i['ticker'])
         return index
 
@@ -47,12 +48,12 @@ class SearchIndex():
 
         for doc in self.index:
             # search on ticker
-            if re.match(query, doc['ticker'],re.I):
+            if re.match(query, doc['ticker'], re.I):
                 results.append({'ticker': doc['ticker'], 'name': doc['name']})
             
             # search on name
             if (
-                re.match(query, doc['name'],re.I)
+                re.match(query, doc['name'], re.I)
                 and {'ticker': doc['ticker'], 'name': doc['name']} not in results
             ):
                 results.append({'ticker': doc['ticker'], 'name': doc['name']})
