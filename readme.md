@@ -1,7 +1,7 @@
 # Django Autocomplete Search
 This is a small project that serves as a demo implementation of a simple Django autocomplete search solution.
 
-Please refer to the [associated blog post here](https://www.chuckvallone.com/posts/a-simple-django-autocomplete-search-solution-for-low-complexity-search-requirements) for more information.
+Please refer to the [associated blog post here](https://www.chuckvallone.com/blog/a-simple-django-autocomplete-search-solution-for-low-complexity-search-requirements) for more information.
 
 
 # This Autocomplete Solution
